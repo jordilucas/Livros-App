@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@{book.title}"
-                android:textColor="@{book.available ? @color/black:@color/red}"
+                android:textColor="@{book.available ? @color/black : @color/red}"
                 android:textSize="24sp" />
 
             <TextView
@@ -51,13 +51,13 @@
                 android:id="@+id/txtPages"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{@string/text_format_pages(book.pages)}" />
+                android:text="@{@string/text_format_book_pages(book.pages)}" />
 
             <TextView
                 android:id="@+id/txtYear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{@string/text_format_year(book.year)}" />
+                android:text="@{@string/text_format_book_year(book.year)}" />
 
             <TextView
                 android:id="@+id/txtPublisher"
@@ -69,8 +69,7 @@
                 android:id="@+id/txtAvailable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{book.available ? @string/text_book_available
-                            : @string/text_book_unavailable}" />
+                android:text="@{book.available ? @string/text_book_available:@string/text_book_unavailable}" />
 
             <!--<TextView
                 android:id="@+id/mediaType"
