@@ -1,3 +1,3 @@
 package com.jordilucas.livros.model
 
-enum class MediaType{PAPER, BOOK}
+enum class MediaType{PAPER, EBOOK}
