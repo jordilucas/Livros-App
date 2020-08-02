@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".BookDetailsActivity">
 
-    <data>
-
+    <data class="ActivityBookBinding">
         <variable
             name="book"
             type="com.jordilucas.livros.model.Book" />
