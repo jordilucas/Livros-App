@@ -1,7 +1,8 @@
 package com.jordilucas.livros.model
 
-import android.media.Rating
+import org.parceler.Parcel
 
+@Parcel
 data class Book(
     var id: String="",
     var title:String="",
