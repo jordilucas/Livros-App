@@ -6,8 +6,8 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.0"
-    dataBinding{
-        enabled true
+    buildFeatures{
+        dataBinding = true
     }
     defaultConfig {
         applicationId "com.jordilucas.livros"
