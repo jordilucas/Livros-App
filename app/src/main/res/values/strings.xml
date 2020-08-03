@@ -6,4 +6,9 @@
     <string name="text_book_unavailable">Indísponivel</string>
     <string name="text_book_media_ebook">E-Book</string>
     <string name="text_book_media_paper">Impresso</string>
+    <string name="text_book_title">Titulo do livro</string>
+    <string name="text_book_author">Autor do livro</string>
+    <string name="text_book_pages">Quantidade de paginas</string>
+    <string name="text_book_year">Ano de publicação</string>
+    <string name="button_save">Salvar</string>
 </resources>
