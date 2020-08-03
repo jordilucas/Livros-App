@@ -10,7 +10,7 @@ class BookListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        BookDetailsActivity.start(this, Book().apply {
+        BookFormActivity.start(this, Book().apply {
             id = "1"
             title = "Dominando Android com Kotlin"
             author = "Nelson Glauber"
