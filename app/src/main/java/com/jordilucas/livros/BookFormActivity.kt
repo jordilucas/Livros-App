@@ -8,7 +8,6 @@ import android.view.View
 import android.widget.CompoundButton
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import com.jordilucas.livros.databinding.ActivityBookBinding
 import com.jordilucas.livros.databinding.ActivityBookFormBinding
 import com.jordilucas.livros.model.Book
 import com.jordilucas.livros.model.MediaType
@@ -17,7 +16,7 @@ import org.parceler.Parcels
 
 class BookFormActivity : AppCompatActivity() {
 
-    private val binding:ActivityBookFormBinding by lazy {
+    private val binding: ActivityBookFormBinding by lazy {
         DataBindingUtil.setContentView<ActivityBookFormBinding>(this, R.layout.activity_book_form)
     }
 
