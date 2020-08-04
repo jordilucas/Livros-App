@@ -14,7 +14,7 @@ import com.jordilucas.livros.model.MediaType
 import com.jordilucas.livros.model.Publisher
 import org.parceler.Parcels
 
-class BookFormActivity : AppCompatActivity() {
+class BookFormActivity : BaseActivity() {
 
     private val binding: ActivityBookFormBinding by lazy {
         DataBindingUtil.setContentView<ActivityBookFormBinding>(this, R.layout.activity_book_form)
@@ -34,6 +34,10 @@ class BookFormActivity : AppCompatActivity() {
         )
         binding.content.view = this
     }
+
+    /*override fun init() {
+        TODO("Not yet implemented")
+    }*/
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)

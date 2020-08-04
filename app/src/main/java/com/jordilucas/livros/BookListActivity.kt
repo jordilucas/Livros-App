@@ -10,7 +10,11 @@ import com.jordilucas.livros.model.MediaType
 import com.jordilucas.livros.model.Publisher
 import kotlinx.android.synthetic.main.activity_book_list.*
 
-class BookListActivity : AppCompatActivity() {
+class BookListActivity : BaseActivity() {
+    /*override fun init() {
+        TODO("Not yet implemented")
+    }*/
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_book_list)

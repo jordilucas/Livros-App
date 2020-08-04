@@ -9,13 +9,17 @@ import com.jordilucas.livros.databinding.ActivityBookBinding
 import com.jordilucas.livros.model.Book
 import org.parceler.Parcels
 
-class BookDetailsActivity : AppCompatActivity() {
+class BookDetailsActivity : BaseActivity() {
 
     private val binding: ActivityBookBinding by lazy {
         DataBindingUtil.setContentView<ActivityBookBinding>(
             this, R.layout.activity_book_details
         )
     }
+
+    /*override fun init() {
+        TODO("Not yet implemented")
+    }*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
