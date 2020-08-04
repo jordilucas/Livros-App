@@ -2,15 +2,19 @@ package com.jordilucas.livros
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.LinearLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.jordilucas.livros.adapter.BookAdapter
 import com.jordilucas.livros.model.Book
 import com.jordilucas.livros.model.MediaType
 import com.jordilucas.livros.model.Publisher
+import kotlinx.android.synthetic.main.activity_book_list.*
 
 class BookListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        BookFormActivity.start(this, Book().apply {
+        setContentView(R.layout.activity_book_list)
+        val books = listOf(Book().apply {
             id = "1"
             title = "Dominando Android com Kotlin"
             author = "Nelson Glauber"
@@ -23,6 +27,9 @@ class BookListActivity : AppCompatActivity() {
             rating = 5.0f
         }
         )
-
+        rvBooks.layoutManager = LinearLayoutManager(this)
+        rvBooks.adapter = BookAdapter(books){book ->
+            BookDetailsActivity.start(this, book)
+        }
     }
 }
