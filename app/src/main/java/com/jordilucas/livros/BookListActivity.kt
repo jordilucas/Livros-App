@@ -14,9 +14,9 @@ import com.jordilucas.livros.model.Publisher
 import kotlinx.android.synthetic.main.activity_book_list.*
 
 class BookListActivity : BaseActivity() {
-    /*override fun init() {
-        TODO("Not yet implemented")
-    }*/
+    override fun init() {
+
+    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.book_list_menu, menu)

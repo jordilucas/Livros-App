@@ -15,7 +15,7 @@ abstract class BaseActivity : AppCompatActivity() {
             if (user != null) {
                 if (!hasInitCalled) {
                     hasInitCalled = true
-                    //init()
+                    init()
                 }
             } else {
                 finish()
@@ -36,6 +36,6 @@ abstract class BaseActivity : AppCompatActivity() {
         fbAuth.removeAuthStateListener(authListener)
     }
 
-    //protected abstract fun init()
+    protected abstract fun init()
 
 }

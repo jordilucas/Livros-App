@@ -17,9 +17,9 @@ class BookDetailsActivity : BaseActivity() {
         )
     }
 
-    /*override fun init() {
-        TODO("Not yet implemented")
-    }*/
+    override fun init() {
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

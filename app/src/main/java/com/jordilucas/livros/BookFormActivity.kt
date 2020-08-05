@@ -8,13 +8,22 @@ import android.view.View
 import android.widget.CompoundButton
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.jordilucas.livros.databinding.ActivityBookFormBinding
 import com.jordilucas.livros.model.Book
 import com.jordilucas.livros.model.MediaType
 import com.jordilucas.livros.model.Publisher
+import com.jordilucas.livros.viewmodels.BookFormViewModel
+import kotlinx.android.synthetic.main.book_form_content.*
 import org.parceler.Parcels
+import java.lang.Exception
 
 class BookFormActivity : BaseActivity() {
+
+    private val viewModel: BookFormViewModel by lazy{
+        ViewModelProviders.of(this).get(BookFormViewModel::class.java)
+    }
 
     private val binding: ActivityBookFormBinding by lazy {
         DataBindingUtil.setContentView<ActivityBookFormBinding>(this, R.layout.activity_book_form)
@@ -35,9 +44,32 @@ class BookFormActivity : BaseActivity() {
         binding.content.view = this
     }
 
-    /*override fun init() {
-        TODO("Not yet implemented")
-    }*/
+    override fun init() {
+        viewModel.showProgress().observe(this, Observer { loading ->
+            loading?.let {
+                btnSave.isEnabled = !loading
+                binding.content.progressBar.visibility = if(it)View.VISIBLE else View.GONE
+            }
+        })
+        viewModel.savingOperation().observe(this, Observer { success ->
+            success?.let {
+                if(success){
+                    showMessageSuccess()
+                    //finish()
+                }else{
+                    showMessageError()
+                }
+            }
+        })
+    }
+
+    private fun showMessageSuccess(){
+        Toast.makeText(this, R.string.message_book_saved, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun showMessageError(){
+        Toast.makeText(this, R.string.message_error_book_saved, Toast.LENGTH_SHORT).show()
+    }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
@@ -57,15 +89,11 @@ class BookFormActivity : BaseActivity() {
     fun clickSaveBook(view:View){
         val book = binding.content.book
         if(book != null){
-            val s = "${book.title}\n"+
-                    "${book.author}\n"+
-                    "${book.publisher?.name}\n"+
-                    "${book.pages}\n"+
-                    "${book.year}\n"+
-                    "${book.available}\n"+
-                    "${book.rating}\n"+
-                    "${book.mediaType}\n"
-            Toast.makeText(this, s, Toast.LENGTH_LONG).show()
+            try {
+                viewModel.saveBook(book)
+            }catch (e:Exception){
+                showMessageError()
+            }
         }
     }
 
