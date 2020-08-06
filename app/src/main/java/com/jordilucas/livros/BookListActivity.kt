@@ -52,7 +52,6 @@ class BookListActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_book_list)
        fabAdd.setOnClickListener { startActivity(Intent(this, BookFormActivity::class.java)) }
-
     }
 
     private fun updateList(books:List<Book>){
@@ -61,5 +60,4 @@ class BookListActivity : BaseActivity() {
             BookDetailsActivity.start(this, book)
         }
     }
-
 }
