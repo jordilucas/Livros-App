@@ -7,11 +7,18 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.jordilucas.livros.databinding.ActivityBookBinding
 import com.jordilucas.livros.model.Book
+import com.jordilucas.livros.viewmodels.BookDetailsViewModel
 import org.parceler.Parcels
 
 class BookDetailsActivity : BaseActivity() {
+
+    private val viewModel: BookDetailsViewModel by lazy {
+        ViewModelProviders.of(this).get(BookDetailsViewModel::class.java)
+    }
 
     private val binding: ActivityBookBinding by lazy {
         DataBindingUtil.setContentView<ActivityBookBinding>(
@@ -20,6 +27,12 @@ class BookDetailsActivity : BaseActivity() {
     }
 
     override fun init() {
+
+        binding.book?.let { book ->
+            viewModel.getBook(book.id).observe(this, Observer {
+                binding.book = it
+            })
+        }
 
     }
 
@@ -37,7 +50,7 @@ class BookDetailsActivity : BaseActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item?.itemId == R.id.menu_edit_book){
+        if (item?.itemId == R.id.menu_edit_book) {
             binding?.book?.let {
                 BookFormActivity.start(this, it)
             }

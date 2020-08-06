@@ -3,6 +3,7 @@ package com.jordilucas.livros.firebase
 import androidx.lifecycle.LiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.SetOptions
 import com.jordilucas.livros.model.Book
 import java.lang.Exception
@@ -39,6 +40,27 @@ class FbRepository {
                     value = false
                 }
 
+            }
+        }
+    }
+
+    fun loadBook(bookId:String):LiveData<Book>{
+        return object : LiveData<Book>() {
+            override fun onActive() {
+                super.onActive()
+                firestore.collection(BOOKS_KEY)
+                    .document(bookId)
+                    .addSnapshotListener { documentSnapshot, firebaseFirestoreException ->
+                        if(firebaseFirestoreException == null){
+                            if (documentSnapshot != null){
+                                val book = documentSnapshot.toObject(Book::class.java)
+                                book?.id = documentSnapshot.id
+                                value = book
+                            }
+                        }else{
+                            throw firebaseFirestoreException
+                        }
+                    }
             }
         }
     }
