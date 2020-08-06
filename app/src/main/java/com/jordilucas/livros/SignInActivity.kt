@@ -66,7 +66,7 @@ class SignInActivity : AppCompatActivity() {
             .addOnCompleteListener { task ->
                 if(task.isSuccessful){
                     finish()
-                    startActivity(Intent(this, BookFormActivity::class.java))
+                    startActivity(Intent(this, BookListActivity::class.java))
                 }else{
                     showErrorSignIn()
                 }
